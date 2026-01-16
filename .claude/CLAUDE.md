@@ -1,7 +1,16 @@
-# ADS Framework - Solo Developer Edition
+# ADS Framework - Solo Developer Edition (v1.3 Ultra-light)
+
+**Version**: v1.3 Ultra-light
+**Optimization**: Skills併用でトークン最小化（プロジェクト固有情報のみ）
+
+---
+
+**✅ Skills**: `.claude/skills/solo-dev-workflow/` から共通ワークフロー自動適用
+
+---
 
 ## プロジェクト概要
-個人開発者向けの軽量版ADS Framework。複数バージョンを提供し、プロジェクト規模に応じた最適なClaude Code設定を実現。
+個人開発者向けの軽量版ADS Framework。複数バージョン（v1.0〜v1.3）を提供し、プロジェクト規模に応じた最適なClaude Code設定を実現するフレームワーク研究プロジェクト。
 
 ## よく使うコマンド
 ```bash
@@ -32,21 +41,16 @@ git diff
 ```
 ADS-Framework-/
 ├── .claude/
-│   └── CLAUDE.md           # このファイル（v1.3）
+│   ├── CLAUDE.md                       # このファイル（v1.3）
+│   └── skills/solo-dev-workflow/       # 共通ワークフロー（520行）
 ├── ads-framework-solo-minimal/
-│   ├── CLAUDE.md           # v1.1 Baseline (481行)
-│   ├── CLAUDE-hybrid.md    # v1.2 Hybrid (244行)
-│   ├── CLAUDE-ultralight.md           # v1.3 Template (80行)
-│   ├── CLAUDE-ultralight-sample.md    # v1.3 Sample
-│   └── README.md
-├── comparison/
-│   ├── VERSION_COMPARISON.md          # 4バージョン詳細比較
-│   ├── EVALUATION_SUMMARY.md          # 評価サマリー
-│   └── FRAMEWORK_PERFORMANCE_REPORT.md
-├── example-skills/
-│   └── solo-dev-workflow/
-│       └── SKILL.md        # 共通ワークフロー定義（520行）
-└── test-v1.3-integration.sh
+│   ├── CLAUDE.md                       # v1.1 Baseline (481行)
+│   ├── CLAUDE-hybrid.md                # v1.2 Hybrid (244行)
+│   ├── CLAUDE-ultralight.md            # v1.3 Template (80行)
+│   └── CLAUDE-ultralight-sample.md     # v1.3 Sample
+├── comparison/                          # バージョン比較分析
+├── example-skills/                      # Skillsテンプレート
+└── test-v1.3-integration.sh            # 統合テスト
 ```
 
 ## プロジェクト固有ルール
@@ -77,7 +81,7 @@ CLAUDE-ultralight.md   # v1.3 Ultra-light
 3. EVALUATION_SUMMARY.md更新
 4. README.md更新
 
-### コミットメッセージ規約
+### コミットメッセージ規約（プロジェクト固有）
 ```
 feat(solo): v1.X追加
 docs(comparison): 比較分析更新
@@ -85,6 +89,11 @@ test: 統合テストスクリプト追加
 ```
 
 ### Skills統合ルール
-- 共通ワークフローは `example-skills/solo-dev-workflow/SKILL.md`
-- プロジェクト固有情報のみこのファイルに記載
-- Skillsの変更時はサンプル（CLAUDE-ultralight-sample.md）も更新
+- **共通ワークフロー**: `.claude/skills/solo-dev-workflow/SKILL.md`
+- **プロジェクト固有情報**: このファイル（CLAUDE.md）に記載
+- **Skillsの変更時**: サンプル（CLAUDE-ultralight-sample.md）も更新
+
+---
+
+**Note**: 開発ワークフロー（5ステップ）、Git運用、エラーハンドリング、セキュリティチェック等は
+`.claude/skills/solo-dev-workflow/SKILL.md` から自動適用されます。
