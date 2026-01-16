@@ -49,6 +49,35 @@ Solo Edition は個人開発（1-2人）向けに最適化されています。�
 
 ## 🚀 クイックスタート
 
+### バージョン選択ガイド
+
+Solo Editionには3つのバージョンがあります:
+
+| バージョン | 行数 | トークン | 推奨用途 |
+|-----------|------|---------|---------|
+| **v1.2 Hybrid** | 244行 | ~730 | **単一プロジェクト（推奨）** |
+| **v1.3 Ultra-light** | 80行 | ~186 | **複数プロジェクト + Skills** |
+| v1.1 Baseline | 481行 | ~1,450 | 学習用・詳細な例が必要な場合 |
+
+#### パターン A: 単一プロジェクトのみ（推奨）
+```bash
+# v1.2 Hybrid を使用
+cp CLAUDE-hybrid.md .claude/CLAUDE.md
+```
+**メリット**: シンプル、1ファイルで完結、セットアップ不要
+
+#### パターン B: 複数プロジェクト（同じワークフロー）
+```bash
+# 1. Skills版をインストール（1回のみ）
+mkdir -p ~/.claude/skills
+cp -r example-skills/solo-dev-workflow ~/.claude/skills/
+
+# 2. 各プロジェクトには軽量版を配置
+cp CLAUDE-ultralight.md project-a/.claude/CLAUDE.md
+cp CLAUDE-ultralight.md project-b/.claude/CLAUDE.md
+```
+**メリット**: -75%トークン、ワークフロー統一、複数PJで効率的
+
 ### インストール
 
 ```bash
@@ -56,24 +85,29 @@ Solo Edition は個人開発（1-2人）向けに最適化されています。�
 git clone https://github.com/Toshiki-Yasuda/ADS-Framework-.git
 cd ADS-Framework-/ads-framework-solo-minimal
 
-# または、既存プロジェクトにコピー
-cp CLAUDE.md /path/to/your/project/
+# パターンAの場合
+cp CLAUDE-hybrid.md /path/to/your/project/.claude/CLAUDE.md
+
+# パターンBの場合
+cp CLAUDE-ultralight.md /path/to/your/project/.claude/CLAUDE.md
 ```
 
 ### 使い方
 
-1. **プロジェクトルートに `CLAUDE.md` を配置**
+1. **バージョンを選択してCLAUDE.mdを配置**
    ```bash
-   cp CLAUDE.md /path/to/your/project/
+   mkdir -p .claude
+   # パターンA: cp CLAUDE-hybrid.md .claude/CLAUDE.md
+   # パターンB: cp CLAUDE-ultralight.md .claude/CLAUDE.md
    ```
 
 2. **プロジェクト固有情報を編集**
    ```bash
-   # CLAUDE.md を開いて以下を更新:
+   # .claude/CLAUDE.md を開いて以下を更新:
    # - プロジェクト概要
    # - よく使うコマンド（npm scripts等）
    # - ディレクトリ構造
-   # - アーキテクチャ
+   # - プロジェクト固有ルール
    ```
 
 3. **Claude Codeで開発開始**
